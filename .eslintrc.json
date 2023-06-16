@@ -21,8 +21,8 @@
     "ignorePatterns": ["tailwind.config.js", "postcss.config.js", "next.config.js"],
     "rules": {
       "linebreak-style": ["error", "unix"],
-      "quotes": ["error", "single"],
-      "semi": ["error", "never"],
+      "quotes": ["error", "double"],
+      "semi": ["error", "always"],
       "indent": [
         "warn",
         2,
