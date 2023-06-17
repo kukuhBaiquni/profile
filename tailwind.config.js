@@ -13,5 +13,12 @@ module.exports = {
     },
   },
   plugins: [],
+  safelist: [
+    'bg-red-500',
+    'bg-green-500',
+    'bg-blue-500',
+    'bg-blue-600',
+    'bg-black'
+  ]
 }
 
