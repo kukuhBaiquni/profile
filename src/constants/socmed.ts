@@ -9,7 +9,7 @@ export type Socmed = {
 const socmed: Socmed[] = [
   {
     text: "+62 821 1903 0614",
-    link: "https://google.com",
+    link: "https://wa.me/+6282119030614",
     color: "bg-green-500",
     icon: "bx bxl-whatsapp text-xl"
   },

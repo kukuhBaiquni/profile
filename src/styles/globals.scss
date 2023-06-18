@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+$scan_width: 375px !default;
+
 :root {
   --base-color: rgb(234 88 12);
 }
@@ -18,6 +20,10 @@ body {
   overflow-x: hidden;
   font-weight: 400;
   font-family: 'Inter', sans-serif;
+}
+
+.t {
+  transition: all;
 }
 
 @keyframes filter {
@@ -37,9 +43,7 @@ body {
 }
 
 .expand {
-  max-width: 135px !important;
-  margin: 0 4px;
-  text-overflow: ellipsis;
+  @apply max-w-[80px] md:max-w-[135px] mx-[4px] text-ellipsis
 }
 
 .backlight {
@@ -51,15 +55,6 @@ body {
   right: -600px;
   transform: rotate(15deg);
   border-left: 8px solid var(--base-color);
-  &::before {
-    content:'';
-    height: 70px;
-    width: 200px;
-    background-color: var(--base-color);
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
 }
 
 .digital {
@@ -109,7 +104,7 @@ body {
   }
 }
 
-.name-effect::before {
+@mixin scan_effect($width: 375px) {
   content: attr(data-text);
   position: absolute;
   color: orangered;
@@ -117,18 +112,44 @@ body {
   overflow: hidden;
   white-space: nowrap;
   border-right: 4px solid orangered;
-  animation: animate 5s ease-in-out infinite;
   filter: drop-shadow(0 0 20px orangered);
+  @include scan_animate($width)
 }
 
-@keyframes animate {
-  0% {
-    width: 0;
+@mixin scan_animate($width) {
+  animation: animate 5s ease-in-out infinite;
+  @keyframes animate {
+    0% {
+      width: 0;
+    }
+    50% {
+      width: $width;
+    }
+    100% {
+      width: 5px;
+    }
   }
-  50% {
-    width: 375px;
+}
+
+.name-effect::before {
+  @include scan_effect();
+}
+
+.name-effect-shorted::before {
+  @include scan_effect(225px);
+}
+
+.marquee {
+  white-space: nowrap;
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
   }
   100% {
-    width: 5px;
+    transform: translate(-100%, 0);
   }
 }

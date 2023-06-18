@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx}',
@@ -11,6 +14,10 @@ module.exports = {
         rajdhani: ['Rajdhani']
       }
     },
+    screens: {
+      xs: '480px',
+      ...defaultTheme.screens
+    }
   },
   plugins: [],
   safelist: [
